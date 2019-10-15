@@ -1,6 +1,6 @@
 # Curso_iot
 
-**Version 1.0.0**
+**Version 1.0.0** - [Change log](CHANGELOG.md)
 
 Codigos del curso IoT de la UOC. 
 ----------------------
