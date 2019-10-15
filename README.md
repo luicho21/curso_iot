@@ -6,7 +6,7 @@ Codigos del curso IoT de la UOC.
 ----------------------
 
 ## CONTRIBUTORS
- - Luis Salgueiro Romero
+ - Luis Salgueiro Romero <luis.fernando.salgueiro at upc dt edu>
 
 ## License and Copyright
   Luis Salgueiro, UPC
