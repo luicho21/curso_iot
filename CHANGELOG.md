@@ -3,6 +3,7 @@
 
 
 ## V1.0.0 -  Oct. 17,2019
+File reader with Make in cpp
 Probing c compiler and Makefiles
 
 *** Added ***
@@ -10,6 +11,7 @@ Probing c compiler and Makefiles
 - Complied with simple g++
 - Makefile
 - compiled with make
+- Filereader.cpp with make
 
 
 
