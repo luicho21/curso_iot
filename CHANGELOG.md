@@ -1,6 +1,7 @@
 # Change log
 
-
+## V1.0.0 - Oct.17,2019
+Organizing directories to contain c and python files
 
 ## V1.0.0 -  Oct. 17,2019
 File reader with Make in cpp
