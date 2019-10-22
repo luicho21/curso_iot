@@ -3,9 +3,10 @@
 #include <string>
 using namespace std;
 
-int main () {
+int main (int argc, char* argv[]) {
 	string line;
-	ifstream infile("prueba.txt");
+	std::cout<<argv[1]<<std::endl;	
+	ifstream infile(argv[1]);
 	if (infile.is_open())
 	{	while( getline(infile,line) ){
 			cout<<line<<"\n";
