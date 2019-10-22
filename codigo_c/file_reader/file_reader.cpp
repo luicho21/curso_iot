@@ -5,7 +5,7 @@ using namespace std;
 
 int main (int argc, char* argv[]) {
 	string line;
-	std::cout<<argv[1]<<std::endl;	
+	cout<<argv[1]<<endl;	
 	ifstream infile(argv[1]);
 	if (infile.is_open())
 	{	while( getline(infile,line) ){
