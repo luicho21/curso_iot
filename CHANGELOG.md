@@ -1,6 +1,6 @@
 # Change log
 
-## V1.1.0 - Nov.01.2019
+## V1.1.0 - Nov.11.2019
 Added arduino files for PLa55
 	***Added***
 	arduino	
