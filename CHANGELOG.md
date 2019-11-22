@@ -1,5 +1,14 @@
 # Change log
 
+## V1.1.1  Nov.22.2019
+Added cifrado files for Act2 of PLA7
+
+## V1.1.0 Nov.18.2019
+Added MQTT files for PLA6
+	*** ADDED ***
+	Arduino files for MQTT with mosquitto broker
+
+
 ## V1.1.0 - Nov.11.2019
 Added arduino files for PLa55
 	***Added***
