@@ -31,7 +31,7 @@
 
 const char* ssid = "vodafone7E0C";
 const char* password = "VVQDMRFD7FBXF8";
-const char* mqtt_server = "test.mosquitto.org";
+const char* mqtt_server = "192.168.4.7";
 const char* topicName = "testL";
 
 WiFiClient espClient;

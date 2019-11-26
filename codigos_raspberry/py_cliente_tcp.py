@@ -8,7 +8,7 @@ import sys
  
 import argparse 
  
-host = '192.168.4.1' 
+host = '192.168.75.128' 
  
 def echo_client(port): 
     #""" A simple echo client """ 

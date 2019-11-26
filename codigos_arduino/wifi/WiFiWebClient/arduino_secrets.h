@@ -1,2 +1,2 @@
 #define SECRET_SSID "PI_test01"
-#define SECRET_PASS ""
+#define SECRET_PASS "123456789"

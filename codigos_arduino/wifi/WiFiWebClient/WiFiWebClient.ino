@@ -34,8 +34,8 @@ int status = WL_IDLE_STATUS;
 //IPAddress server(74,125,232,128);  // numeric IP for Google (no DNS)
 //char server[] = "www.google.com";    // name address for Google (using DNS)
 
-IPAddress server(192,168,4,1);  // numeric IP for Google (no DNS)
-
+IPAddress server(192,168,75,128);  // numeric IP for Google (no DNS)
+int port = 12225;
 
 // Initialize the Ethernet client library
 // with the IP address and port of the server
@@ -63,15 +63,15 @@ void setup() {
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
     status = WiFi.begin(ssid, pass);
 
-    // wait 10 seconds for connection:
-    delay(10000);
+    // wait 5 seconds for connection:
+    delay(5000);
   }
   Serial.println("Connected to wifi");
   printWiFiStatus();
 
   Serial.println("\nStarting connection to server...");
   // if you get a connection, report back via serial:
-  if (client.connect(server, 9980)) {
+  if (client.connect(server, port)) {
     Serial.println("connected to server");
     Serial.println("Sending HOLA!!");
     // Make a HTTP request:

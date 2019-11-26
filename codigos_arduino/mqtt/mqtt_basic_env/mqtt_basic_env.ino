@@ -18,9 +18,12 @@
 
 // Update these with values suitable for your network.
 
-const char* ssid = "vodafone7E0C";
-const char* password = "VVQDMRFD7FBXF8";
-const char* mqtt_server = "test.mosquitto.org";
+const char* ssid = "PI_test01";//"vodafone7E0C";
+const char* password = "123456789";//"VVQDMRFD7FBXF8";
+//const char* mqtt_server = "test.mosquitto.org";
+IPAddress mqtt_server(192,168,4,7);  // numeric IP for Google (no DNS)
+
+
 const char* topicName = "MKR_ENV";
 const char* topicNameTemp = "MKR_ENV/sensor1/temp";
 const char* topicNameHum = "MKR_ENV/sensor2/hum";
@@ -63,7 +66,7 @@ void setup_wifi() {
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    delay(5000);
     Serial.print(".");
   }
 
@@ -72,6 +75,7 @@ void setup_wifi() {
   Serial.println("IP address: ");
   IPAddress ip = WiFi.localIP();
   Serial.println(ip);
+  delay(15000);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -194,6 +198,8 @@ void loop() {
 
   // print an empty line
   Serial.println();
+  //Serial.println(ip);
+
 
 
 
