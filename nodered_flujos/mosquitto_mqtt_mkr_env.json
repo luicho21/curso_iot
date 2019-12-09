@@ -1,0 +1,181 @@
+[
+    {
+        "id": "d557dbc4.a16c8",
+        "type": "tab",
+        "label": "MQTT_Mosquito_MKR-ENV",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ffa9691.4a01d98",
+        "type": "debug",
+        "z": "d557dbc4.a16c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 530,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "74681a42.7351ec",
+        "type": "mqtt in",
+        "z": "d557dbc4.a16c8",
+        "name": "",
+        "topic": "home/#",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "b544c59e.6e6678",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "b9041704.7ef8b8",
+                "3a9b8449.a970e4"
+            ]
+        ]
+    },
+    {
+        "id": "b9041704.7ef8b8",
+        "type": "debug",
+        "z": "d557dbc4.a16c8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "67ae61ef.c33728",
+        "type": "influxdb out",
+        "z": "d557dbc4.a16c8",
+        "influxdb": "c1046524.ae9698",
+        "name": "",
+        "measurement": "home",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 630,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3a9b8449.a970e4",
+        "type": "function",
+        "z": "d557dbc4.a16c8",
+        "name": "Convert to JSON",
+        "func": "\nvar tokens = msg.topic.split(\"/\");\n\nif(tokens[2].indexOf(\"$\")==-1 && tokens[3].indexOf(\"$\")==-1){\nmsg.measurement=tokens[0]\nmsg.payload = {\"device\":tokens[1],\"node\":tokens[2],\"property\":tokens[3],\"value\":msg.payload};\n// msg=\"\";\n\n}else {\n\nmsg = \"\";\n\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "ffa9691.4a01d98",
+                "95782d08.ef7fe8",
+                "1bca3ff8.357018",
+                "e7231b2d.e4769",
+                "67ae61ef.c33728"
+            ]
+        ]
+    },
+    {
+        "id": "95782d08.ef7fe8",
+        "type": "function",
+        "z": "d557dbc4.a16c8",
+        "name": "Temperature",
+        "func": "if(msg.payload.property==='temperature'){\n    node.status({'text':msg.payload.value})\n}\nreturn msg;    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "386289f8.4de92e",
+        "type": "debug",
+        "z": "d557dbc4.a16c8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 510,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1bca3ff8.357018",
+        "type": "function",
+        "z": "d557dbc4.a16c8",
+        "name": "Humidity",
+        "func": "if(msg.payload.property==='humidity'){\n    node.status({'text':msg.payload.value})\n}\nreturn msg;    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7231b2d.e4769",
+        "type": "function",
+        "z": "d557dbc4.a16c8",
+        "name": "Pressure",
+        "func": "if(msg.payload.property==='pressure'){\n    node.status({'text':msg.payload.value})\n}\nreturn msg;    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b544c59e.6e6678",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "home",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "c1046524.ae9698",
+        "type": "influxdb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "MKR_HOME2",
+        "name": "",
+        "usetls": false,
+        "tls": ""
+    }
+]
