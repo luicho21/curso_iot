@@ -2,7 +2,7 @@
 #define SECRET_SSID "PI_test01"
 #define SECRET_PASS "123456789"
 //MQTT config
-#define SECRET_MQTT_HOST "192.168.4.7"
+#define SECRET_MQTT_HOST "192.168.4.1"
 #define SECRET_MQTT_USER "luis"
 #define SECRET_MQTT_PASS "123456"
 #define SECRET_MQTT_ID "device001"

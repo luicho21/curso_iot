@@ -21,7 +21,7 @@
 const char* ssid = "PI_test01";//"vodafone7E0C";
 const char* password = "123456789";//"VVQDMRFD7FBXF8";
 //const char* mqtt_server = "test.mosquitto.org";
-IPAddress mqtt_server(192,168,4,7);  // numeric IP for Google (no DNS)
+IPAddress mqtt_server(192,168,4,1);  // numeric IP for Google (no DNS)
 
 
 const char* topicName = "MKR_ENV";
@@ -139,34 +139,34 @@ void loop() {
   if (now - lastMsg > 2000) {
     lastMsg = now;
     ++value;
-    snprintf (msg, 75, "***LECTURA #%ld", value);
-    Serial.print("Publish message: ");
-    Serial.println(msg);
-    client.publish(topicName, msg);
+//    snprintf (msg, 75, "***LECTURA #%ld", value);
+//    Serial.print("Publish message: ");
+//    Serial.println(msg);
+//    client.publish(topicName, msg);
 
-    snprintf (msg, 75, "TEMPERATURA #%.2f", temperature);
+    snprintf (msg, 75, "Temperature %.2f", temperature);
 //    Serial.print("Publish temperature: ");
 //    Serial.println(msg);
     client.publish(topicNameTemp, msg);
 
-    snprintf (msg, 75, "Humidity #%.2f", humidity);
+    snprintf (msg, 75, "Humidity %.2f", humidity);
     client.publish(topicNameHum, msg);
     
-    snprintf (msg, 75, "Pressure #%.2f", pressure);
+    snprintf (msg, 75, "Pressure %.2f", pressure);
     client.publish(topicNamePress, msg);
 
-    snprintf (msg, 75, "Illuminance #%.2f", illuminance);
+    snprintf (msg, 75, "Illuminance %.2f", illuminance);
     client.publish(topicNameIllu, msg);
 
-    snprintf (msg, 75, "UVA #%.2f", uva);
+    snprintf (msg, 75, "UVA %.2f", uva);
     client.publish(topicNameUva, msg);
-    snprintf (msg, 75, "UVB #%.2f", uvb);
+    snprintf (msg, 75, "UVB %.2f", uvb);
     client.publish(topicNameUvb, msg);
-    snprintf (msg, 75, "UV Index #%.2f", uvIndex);
+    snprintf (msg, 75, "UV_Index %.2f", uvIndex);
     client.publish(topicNameUV, msg);
 
-    snprintf (msg, 75, "***END LECTURA #%ld *****", value);
-    client.publish(topicName, msg);
+//    snprintf (msg, 75, "***END LECTURA #%ld *****", value);
+//    client.publish(topicName, msg);
 
 
 

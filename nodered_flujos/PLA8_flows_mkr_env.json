@@ -1,0 +1,121 @@
+[
+    {
+        "id": "1237d8b5.27f897",
+        "type": "tab",
+        "label": "Flow_MKR_ENV",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "59da7365.7bb20c",
+        "type": "debug",
+        "z": "1237d8b5.27f897",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 490,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "3a0068b6.1887d8",
+        "type": "mqtt in",
+        "z": "1237d8b5.27f897",
+        "name": "",
+        "topic": "home/#",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "b544c59e.6e6678",
+        "x": 70,
+        "y": 520,
+        "wires": [
+            [
+                "c512c759.ec8708",
+                "dd4f1382.d9b62"
+            ]
+        ]
+    },
+    {
+        "id": "c512c759.ec8708",
+        "type": "debug",
+        "z": "1237d8b5.27f897",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 310,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9240d390.c3a2d",
+        "type": "influxdb out",
+        "z": "1237d8b5.27f897",
+        "influxdb": "c1046524.ae9698",
+        "name": "",
+        "measurement": "home",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 590,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "dd4f1382.d9b62",
+        "type": "function",
+        "z": "1237d8b5.27f897",
+        "name": "Convert to JSON",
+        "func": "\nvar tokens = msg.topic.split(\"/\");\n\nif(tokens[2].indexOf(\"$\")==-1 && tokens[3].indexOf(\"$\")==-1){\nmsg.measurement=tokens[0]\nmsg.payload = {\"device\":tokens[1],\"node\":tokens[2],\"property\":tokens[3],\"value\":msg.payload};\n\n}else {\n\nmsg = \"\";\n\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 260,
+        "y": 620,
+        "wires": [
+            [
+                "59da7365.7bb20c",
+                "9240d390.c3a2d"
+            ]
+        ]
+    },
+    {
+        "id": "b544c59e.6e6678",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "home",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "c1046524.ae9698",
+        "type": "influxdb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "MKR_HOME2",
+        "name": "",
+        "usetls": false,
+        "tls": ""
+    }
+]

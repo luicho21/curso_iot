@@ -86,12 +86,12 @@ void loop()
     // MQTT client
     client.loop();
 
-    if (!client.connected())
+    if (!client.connected()) 
     {
         connect();
     }
         // publish a message roughly every second.
-    if (millis() - lastMillis > 1000) 
+    if (millis() - lastMillis > 5000) 
     {        
       // read all the sensor values
       float temperature = ENV.readTemperature();

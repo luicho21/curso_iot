@@ -1,0 +1,271 @@
+[
+    {
+        "id": "630b534.8be3aac",
+        "type": "tab",
+        "label": "Flow Relay",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d753c719.3a0cb8",
+        "type": "mqtt in",
+        "z": "630b534.8be3aac",
+        "name": "Subsc:home",
+        "topic": "home/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b544c59e.6e6678",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "29cf9ce7.b17b44"
+            ]
+        ]
+    },
+    {
+        "id": "29cf9ce7.b17b44",
+        "type": "debug",
+        "z": "630b534.8be3aac",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8bf8b8c2.4c0048",
+        "type": "mqtt out",
+        "z": "630b534.8be3aac",
+        "name": "Pub_home",
+        "topic": "home/arduino2/relayshield/relay1/set",
+        "qos": "0",
+        "retain": "",
+        "broker": "b544c59e.6e6678",
+        "x": 430,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1c54bd92.e70af2",
+        "type": "mqtt out",
+        "z": "630b534.8be3aac",
+        "name": "Pub_home",
+        "topic": "home/arduino2/relayshield/relay2/set",
+        "qos": "0",
+        "retain": "",
+        "broker": "b544c59e.6e6678",
+        "x": 430,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c0a569b1.a71658",
+        "type": "ui_led",
+        "z": "630b534.8be3aac",
+        "group": "39e73944.6ca846",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "center",
+        "colorForValue": [
+            {
+                "color": "red",
+                "value": "false",
+                "valueType": "str"
+            },
+            {
+                "color": "green",
+                "value": "true",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "Relay_1",
+        "x": 440,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ee0484e4.c04678",
+        "type": "mqtt in",
+        "z": "630b534.8be3aac",
+        "name": "Subsc:Relay1",
+        "topic": "home/arduino2/relayshield/relay1",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "b544c59e.6e6678",
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "c0a569b1.a71658"
+            ]
+        ]
+    },
+    {
+        "id": "39a1e00.fbb9e2",
+        "type": "mqtt in",
+        "z": "630b534.8be3aac",
+        "name": "Subsc:Relay2",
+        "topic": "home/arduino2/relayshield/relay2",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "b544c59e.6e6678",
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "e0876f09.bf6fd"
+            ]
+        ]
+    },
+    {
+        "id": "e0876f09.bf6fd",
+        "type": "ui_led",
+        "z": "630b534.8be3aac",
+        "group": "a45d0e4a.b0648",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "center",
+        "colorForValue": [
+            {
+                "color": "red",
+                "value": "false",
+                "valueType": "str"
+            },
+            {
+                "color": "green",
+                "value": "true",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "Relay_2",
+        "x": 440,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "fac65296.264a7",
+        "type": "ui_switch",
+        "z": "630b534.8be3aac",
+        "name": "Relay1",
+        "label": "Relay_1",
+        "tooltip": "",
+        "group": "39e73944.6ca846",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "8bf8b8c2.4c0048"
+            ]
+        ]
+    },
+    {
+        "id": "6394bcd0.0ab3f4",
+        "type": "ui_switch",
+        "z": "630b534.8be3aac",
+        "name": "Relay_2",
+        "label": "Relay_2",
+        "tooltip": "",
+        "group": "a45d0e4a.b0648",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "1c54bd92.e70af2"
+            ]
+        ]
+    },
+    {
+        "id": "b544c59e.6e6678",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "home",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "39e73944.6ca846",
+        "type": "ui_group",
+        "z": "",
+        "name": "Relay_1",
+        "tab": "315f5e9a.fa7f12",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a45d0e4a.b0648",
+        "type": "ui_group",
+        "z": "",
+        "name": "Relay_2",
+        "tab": "315f5e9a.fa7f12",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "315f5e9a.fa7f12",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
