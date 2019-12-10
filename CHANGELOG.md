@@ -1,5 +1,9 @@
 # Change log
 
+## V1.1.1  DIC.12.2019
+Added files for PLA8
+
+
 ## V1.1.1  Nov.22.2019
 Added cifrado files for Act2 of PLA7
 
